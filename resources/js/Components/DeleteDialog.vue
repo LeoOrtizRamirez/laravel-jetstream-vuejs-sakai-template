@@ -2,7 +2,7 @@
     <Dialog
         v-model:visible="dialogVisible"
         :style="{width: '450px'}"
-        header="Potwierdzenie"
+        header="Confirmación"
         :modal="true"
         :closable="false"
     >
@@ -14,13 +14,13 @@
         </div>
         <template #footer>
             <Button
-                label="Anuluj"
+                label="Cancelar"
                 icon="pi pi-times"
                 class="p-button-text"
                 @click="onClose"
             />
             <Button
-                label="Zapisz"
+                label="Aceptar"
                 icon="pi pi-check"
                 class="p-button-text"
                 :loading="loading"
@@ -51,7 +51,7 @@ export default {
         },
         message: {
             type: String,
-            default: 'Na pewno chcesz kontynuować?'
+            default: 'Deseas eliminar este registro?'
         }
     },
     emits: ['update:visible', 'delete'],
