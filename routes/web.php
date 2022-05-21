@@ -40,6 +40,10 @@ Route::middleware(['auth:sanctum', 'verified'])->group(function () {
     Route::resource('customers', CustomerController::class);
 });
 
+Route::middleware(['auth:sanctum', 'verified'])->group(function () {
+    Route::get('/loans/datatable', [LoanController::class, 'datatable'])->name('loans.datatable');
+    Route::resource('loans', LoanController::class);
+});
 
 
 

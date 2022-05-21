@@ -6835,3 +6835,19 @@ p:last-child {
   border-top-right-radius: 12px;
   border-bottom-right-radius: 12px;
 }
+
+/*Custom*/
+.p-datatable-wrapper {
+  overflow-x: auto;
+}
+
+.loan-badge {
+  border-radius: var(--border-radius);
+  padding: 0.25em 0.5rem;
+  text-transform: uppercase;
+  font-weight: 700;
+  font-size: 12px;
+  letter-spacing: .3px;
+  background: #c8e6c9;
+  color: #256029;
+}
