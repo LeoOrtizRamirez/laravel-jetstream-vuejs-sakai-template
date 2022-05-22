@@ -6,7 +6,7 @@
 
         <title inertia>{{ config('app.name', 'Laravel') }}</title>
 
-        <link id="theme-link" rel="stylesheet" href="/themes/lara-light-indigo/theme.css">
+        
 
 
         <!-- Fonts -->
@@ -14,6 +14,8 @@
 
         <!-- Styles -->
         <link rel="stylesheet" href="{{ mix('css/app.css') }}">
+
+        <link id="theme-link" rel="stylesheet" href="/themes/lara-light-indigo/theme.css">
 
         <!-- Scripts -->
         @routes

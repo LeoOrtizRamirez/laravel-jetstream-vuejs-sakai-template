@@ -1,12 +1,12 @@
 <template>
     <Head title="Log in" />
 
-    <MinimalLayout title="Logowanie">
+    <MinimalLayout title="Iniciar sesión">
         <template #content>
             <div class="fluid">
                 <div class="field">
                     <label for="email">
-                        Adres e-mail
+                        Correo electrónico
                     </label>
                     <InputText id="email"
                                v-model="form.email"
@@ -21,7 +21,7 @@
                 </div>
                 <div class="field">
                     <label for="password">
-                        Hasło
+                        Contraseña
                     </label>
                     <InputText id="email"
                                v-model="form.password"
@@ -36,7 +36,7 @@
                     </small>
                 </div>
                 <div class="field">
-                    <Button label="Zaloguj się"
+                    <Button label="Continuar"
                             icon="pi pi-sign-in"
                             type="submit"
                             @click="submit"

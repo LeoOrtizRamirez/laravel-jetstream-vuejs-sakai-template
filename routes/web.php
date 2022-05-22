@@ -51,7 +51,10 @@ Route::middleware(['auth:sanctum', 'verified'])->group(function () {
     Route::resource('investments', InvestmentController::class);
 });
 
-
+Route::middleware(['auth:sanctum', 'verified'])->group(function () {
+    Route::get('/payments/datatable', [PaymentController::class, 'datatable'])->name('payments.datatable');
+    Route::resource('payments', PaymentController::class);
+});
 /*
 
 Route::middleware([

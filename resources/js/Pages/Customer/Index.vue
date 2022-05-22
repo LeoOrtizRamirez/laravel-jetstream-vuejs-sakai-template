@@ -26,11 +26,9 @@
                         @filter="onSort($event)"
                     >
                         <template #header>
-                            <div class="table-header">
                                 <h5 class="p-m-0">
                                     Clientes
                                 </h5>
-                            </div>
                         </template>
                         <Column field="id" header="ID" :sortable="true">
                             <template #body="slotProps">
