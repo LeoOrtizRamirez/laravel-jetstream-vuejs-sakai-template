@@ -67,7 +67,7 @@
                         </Column>
                         <Column field="status_id" header="Estado" :sortable="true">
                             <template #body="slotProps">
-                                <span class="loan-badge">
+                                <span class="loan-badge" :style="{ 'background': slotProps.data.status_background_color, 'color': slotProps.data.status_color}">
                                 {{ slotProps.data.status }}
                                 </span>
                             </template>

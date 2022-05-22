@@ -4,6 +4,7 @@ use Illuminate\Support\Facades\Route;
 use Inertia\Inertia;
 
 use App\Models\User;
+use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\CustomerController;
 use App\Http\Controllers\LoanController;
@@ -25,9 +26,10 @@ Route::get('/', function () {
     return redirect()->route('dashboard');
 });
 
-Route::middleware(['auth:sanctum', 'verified'])->get('/dashboard', function () {
-    return Inertia::render('Dashboard');
-})->name('dashboard');
+Route::middleware(['auth:sanctum', 'verified'])->group( function () {
+    Route::get('/dashboard', [DashboardController::class, 'index'])->name('dashboard');
+    //return Inertia::render('Dashboard');
+});
 
 Route::middleware(['auth:sanctum', 'verified'])->group(function () {
     Route::get('/users/datatable', [UserController::class, 'datatable'])->name('users.datatable');

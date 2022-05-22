@@ -25,6 +25,8 @@ class LoanDatatable extends Datatable
                 'way_to_pay' => $loan->way_to_pay,
                 'payment_date' => $loan->payment_date,
                 'status' => $loan->status->name,
+                'status_color' => $loan->status->color,
+                'status_background_color' => $loan->status->background_color,
             ];
         };
     }

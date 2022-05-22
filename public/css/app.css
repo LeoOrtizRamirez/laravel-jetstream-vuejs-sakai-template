@@ -6848,8 +6848,6 @@ p:last-child {
   font-weight: 700;
   font-size: 12px;
   letter-spacing: .3px;
-  background: #c8e6c9;
-  color: #256029;
 }
 
 i.pi.pi-shopping-cart, i.pi.pi-eye {
@@ -6859,3 +6857,5 @@ i.pi.pi-shopping-cart, i.pi.pi-eye {
 .margin-right-10{
   margin-right: 10px;
 }
+
+
