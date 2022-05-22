@@ -44,9 +44,12 @@ Route::middleware(['auth:sanctum', 'verified'])->group(function () {
     Route::get('/loans/datatable', [LoanController::class, 'datatable'])->name('loans.datatable');
     Route::resource('loans', LoanController::class);
 });
-
 Route::post('loan/payment/to-pay/{id}/{view}', [PaymentController::class, 'setToPay'])->name('payment.store');
 
+Route::middleware(['auth:sanctum', 'verified'])->group(function () {
+    Route::get('/investments/datatable', [InvestmentController::class, 'datatable'])->name('investments.datatable');
+    Route::resource('investments', InvestmentController::class);
+});
 
 
 /*
