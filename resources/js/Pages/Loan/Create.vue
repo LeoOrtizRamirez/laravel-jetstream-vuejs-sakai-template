@@ -11,7 +11,7 @@
                                 <div class="p-fluid formgrid grid">
                                     <div class="field col-12 md:col-6">
                                         <label for="name">Cliente</label>
-                                        <select name="customer_id" id="customer_id" class="mt-1 block w-full" v-model="form.customer_id" required>
+                                        <select name="customer_id" id="customer_id" class="block w-full" v-model="form.customer_id" required>
                                             <option value="">Selecciona un cliente</option>
                                             <option v-for="customer in customers" :key="customer.id" :value="customer.id">{{customer.name}}</option>
                                         </select>
@@ -23,7 +23,7 @@
                                     
                                     <div class="field col-12 md:col-6">
                                         <label for="interest">Interes</label>
-                                        <select name="interest" id="interest" class="mt-1 block w-full" v-model="form.interest" @change="getBalance" required>
+                                        <select name="interest" id="interest" class="block w-full" v-model="form.interest" @change="getBalance" required>
                                             <option value="">Selecciona un Interes</option>
                                             <option value="5">5%</option>
                                             <option value="10">10%</option>
@@ -41,7 +41,7 @@
                                     </div>
                                     <div class="field col-12 md:col-6">
                                         <label for="way_to_pay">Forma de Pago</label>
-                                        <select name="way_to_pay" id="way_to_pay" class="mt-1 block w-full" v-model="form.way_to_pay" required>
+                                        <select name="way_to_pay" id="way_to_pay" class="block w-full" v-model="form.way_to_pay" required>
                                             <option value="">Selecciona una Forma de Pago</option>
                                             <option value="1">Diario</option>
                                             <option value="7">Semanal</option>

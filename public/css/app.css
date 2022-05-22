@@ -6857,5 +6857,11 @@ i.pi.pi-shopping-cart, i.pi.pi-eye {
 .margin-right-10{
   margin-right: 10px;
 }
+select{
+  height: 39px;
+  border: 1px solid #ced4da;
+  border-radius: 7px;
+  background: --surface-0;
+}
 
 

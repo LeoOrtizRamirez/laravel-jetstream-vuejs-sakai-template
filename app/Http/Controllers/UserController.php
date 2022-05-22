@@ -102,4 +102,11 @@ class UserController extends Controller
         $user->delete();
         return redirect()->back();
     }
+
+    public function getPermissions(){
+        foreach (Auth::user()->getAllPermissions() as $permission) {
+            $permissions[] = $permission->name;
+        }
+        return $permissions;
+    }
 }

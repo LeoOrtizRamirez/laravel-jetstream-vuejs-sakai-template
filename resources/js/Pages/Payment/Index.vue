@@ -9,10 +9,10 @@
                         <div class="text-900 font-medium text-xl">Valor: <span class="text-green-500 font-medium">{{ new Intl.NumberFormat('en-US').format(p.amount) }}</span></div>
                     </div>
                     <div class="grid">
-                        <div class="flex align-items-center justify-content-center bg-blue-100 border-round margin-right-10" style="width:2.5rem;height:2.5rem">
+                        <div v-permission="'loan.get'" class="flex align-items-center justify-content-center bg-blue-100 border-round margin-right-10" style="width:2.5rem;height:2.5rem">
                             <i @click="loadLoan(p.loan_id)" class="pi pi-eye text-blue-500 text-xl"></i>
                         </div>
-                        <div v-if="p.status_id != 2" class="flex align-items-center justify-content-center bg-green-100 border-round" style="width:2.5rem;height:2.5rem">
+                        <div v-permission="'payment.store'" v-if="p.status_id != 2" class="flex align-items-center justify-content-center bg-green-100 border-round" style="width:2.5rem;height:2.5rem">
                             <i @click="setPayment(p.id)" class="pi pi-dollar text-green-500 text-xl"></i>
                         </div>
                     </div>

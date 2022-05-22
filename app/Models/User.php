@@ -11,6 +11,12 @@ use Laravel\Jetstream\HasProfilePhoto;
 use Laravel\Sanctum\HasApiTokens;
 use Spatie\Permission\Traits\HasPermissions;
 
+/* Add Permissions*/
+use Spatie\Permission\Models\Permission;
+use Illuminate\Support\Facades\Auth;
+
+use Spatie\Permission\Traits\HasRoles;
+
 class User extends Authenticatable
 {
     use HasApiTokens;
@@ -18,7 +24,8 @@ class User extends Authenticatable
     use HasProfilePhoto;
     use Notifiable;
     use TwoFactorAuthenticatable;
-    use HasPermissions;
+    //use HasPermissions;
+    use HasRoles;
 
     /**
      * The attributes that are mass assignable.
@@ -60,4 +67,9 @@ class User extends Authenticatable
     protected $appends = [
         'profile_photo_url',
     ];
+
+    public function setPasswordAttribute($value){
+        //$this->attributes["password"] = Hash::make($value);
+        $this->attributes["password"] = bcrypt($value);
+    }
 }

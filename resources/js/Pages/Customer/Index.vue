@@ -1,7 +1,7 @@
 <template>
     <div>
         <div class="p-grid">
-            <div class="p-col-12">
+            <div class="p-col-12" v-permission="'customer.create'">
                 <div class="card">
                     <Menubar :model="menuItems"/>
                 </div>
@@ -42,12 +42,12 @@
                         </Column>
                         <Column header="Acciones" style="width: 150px;">
                             <template #body="slotProps">
-                                <Button
+                                <Button v-permission="'customer.edit'"
                                     icon="pi pi-pencil"
                                     class="p-button-success p-button-sm mr-1"
                                     @click="edit(slotProps.data.id)"
                                 />
-                                <Button icon="pi pi-trash" class="p-button-sm p-button-danger"
+                                <Button v-permission="'customer.destroy'" icon="pi pi-trash" class="p-button-sm p-button-danger"
                                         @click="showDeleteDialog(slotProps.data)"
                                 />
                             </template>

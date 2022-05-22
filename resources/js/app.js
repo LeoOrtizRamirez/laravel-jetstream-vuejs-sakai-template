@@ -7,6 +7,9 @@ import pl from './Locales/pl.json';
 import en from './Locales/en.json';
 import { createI18n } from 'vue-i18n';
 
+import VueGates from 'vue-gates';
+import Permissions from './Plugins/Permissions';
+
 /*Components*/
 import InputSwitch from 'primevue/inputswitch';
 import RadioButton from 'primevue/radiobutton';
@@ -41,6 +44,8 @@ createInertiaApp({
             .use(PrimeVue)
             .use(i18n)
             .use(ToastService)
+            .use(VueGates)
+            .use(Permissions)
             .component('Button', Button)
             .component('InputSwitch', InputSwitch)
             .component('RadioButton', RadioButton)
