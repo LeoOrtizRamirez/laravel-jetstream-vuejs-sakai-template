@@ -1,3 +1,70 @@
+<template>
+    <div class="p-grid">
+        <h5>Lista de Pagos</h5>
+        <div class="col-12 lg:col-12 xl:col-12" v-for="p in payments" :key="p.id">
+            <div class="card mb-0">
+                <div class="flex justify-content-between mb-3">
+                    <div>
+                        <span class="block text-500 font-medium mb-3"><strong>{{p.name}}:</strong> Cuota: {{ p.fee }}</span>
+                        <div class="text-900 font-medium text-xl">Valor: <span class="text-green-500 font-medium">{{ new Intl.NumberFormat('en-US').format(p.amount) }}</span></div>
+                    </div>
+                    <div class="grid">
+                        <div class="flex align-items-center justify-content-center bg-blue-100 border-round margin-right-10" style="width:2.5rem;height:2.5rem">
+                            <i @click="loadLoan(p.loan_id)" class="pi pi-eye text-blue-500 text-xl"></i>
+                        </div>
+                        <div v-if="p.status_id != 2" class="flex align-items-center justify-content-center bg-green-100 border-round" style="width:2.5rem;height:2.5rem">
+                            <i @click="setPayment(p.id)" class="pi pi-dollar text-green-500 text-xl"></i>
+                        </div>
+                    </div>
+                    
+                </div>
+                <span class="font-medium">Fecha de Pago: {{  dateFormat(p.payment_date) }}</span>
+            </div>
+        </div>
+    </div>
+</template>
+
+<script>
+import AppLayout from "../../Layouts/AppLayout";
+import Button from "primevue/button";
+
+export default {
+    name: "Index",
+    layout: AppLayout,
+    components: {
+        AppLayout,
+        Button,
+    },
+    props:{
+        payments:[],
+        dates:[]
+    },
+    data() {
+        return {
+        }
+    },
+    methods: {
+        dateFormat(date){
+            const months = ["Enero", "Febrero", "Marzo", "Abril", "Mayo", "Junio", "Julio", "Agosto", "Septiembre", "Octubre", "Noviembre", "Diciembre"];
+            const d = new Date(date)
+            const month = months[d.getMonth()];
+            return  d.getDate() + " de " + month + " " + d.getFullYear()
+        },
+        setPayment(id){
+            this.$inertia.post(route('payment.store',[id,'index']))
+        },
+        loadLoan(id){
+            this.$inertia.get(route('loan.get',id))
+        }
+    }
+}
+</script>
+
+<style scoped>
+
+</style>
+
+<!--
 <script setup>
 import AppLayout from '@/Layouts/AppLayout.vue';
 import { Link } from '@inertiajs/inertia-vue3';
@@ -116,3 +183,4 @@ export default {
     }
 }
 </script>
+-->

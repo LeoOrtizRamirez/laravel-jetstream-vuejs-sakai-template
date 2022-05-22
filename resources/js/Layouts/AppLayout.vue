@@ -42,6 +42,7 @@ export default {
                         {label: 'Dashboard', icon: 'pi pi-fw pi-home', to: this.route('dashboard'), prefix: 'dashboard'},
                         {label: 'Clientes', icon: 'pi pi-fw pi-users', to: this.route('customers.index'),},
                         {label: 'Prestamos', icon: 'pi pi-fw pi-shopping-cart', to: this.route('loans.index'),},
+                        {label: 'Pagos', icon: 'pi pi-fw pi-dollar', to: this.route('payments.index'),},
                         {label: 'Inversiones', icon: 'pi pi-fw pi-dollar', to: this.route('investments.index'),},
                         {label: 'Usuarios', icon: 'pi pi-fw pi-users', to: this.route('users.index'),},
                         {

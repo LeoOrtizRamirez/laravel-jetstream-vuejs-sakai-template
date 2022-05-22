@@ -1,6 +1,7 @@
 <template>
     <div>
         <div class="p-grid">
+            <h5>Prestamo de {{customer}}</h5>
             <div class="col-12 lg:col-12 xl:col-12" v-for="p in payments" :key="p.id">
                 <div class="card mb-0">
                     <div class="flex justify-content-between mb-3">
@@ -30,29 +31,18 @@
 
 <script>
 import AppLayout from "../../Layouts/AppLayout";
-import DataTable from "primevue/datatable";
-import {FilterMatchMode} from "primevue/api";
-import DatatableService from "../../Services/DatatableService";
-import Menubar from "primevue/menubar";
-import Column from "primevue/column";
 import Button from "primevue/button";
-import DeleteDialog from "../../Components/DeleteDialog";
-import { Link } from '@inertiajs/inertia-vue3';
 
 export default {
     name: "Index",
     layout: AppLayout,
     components: {
         AppLayout,
-        Menubar,
-        DataTable,
-        Column,
         Button,
-        DeleteDialog,
-        Link
     },
     props:{
         payments:[],
+        customer:"",
         total: 0,
     },
     data() {

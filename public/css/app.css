@@ -6852,6 +6852,10 @@ p:last-child {
   color: #256029;
 }
 
-i.pi.pi-shopping-cart {
+i.pi.pi-shopping-cart, i.pi.pi-eye {
   cursor: pointer;
+}
+
+.margin-right-10{
+  margin-right: 10px;
 }

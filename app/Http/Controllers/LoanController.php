@@ -78,13 +78,13 @@ class LoanController extends Controller
     
     public function show(Loan $loan): Response
     {
-        //dd($loan);
-        $payments = Payment::with('status')->where('loan_id',$loan->id)->get();
+        $payments = Payment::where('loan_id',$loan->id)->get();
         $total = 0;
         foreach ($payments as $key => $value) {
             $total +=  (int) $value->amount;
         }
-        return Inertia::render('Loan/Show', compact('loan', 'payments', 'total'));
+        $customer = $loan->customer->name;
+        return Inertia::render('Loan/Show', compact('customer', 'payments', 'total'));
     }
 
 
