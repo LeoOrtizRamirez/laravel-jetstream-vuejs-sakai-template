@@ -40,32 +40,32 @@
                                 {{ slotProps.data.customer }}
                             </template>
                         </Column>
-                        <Column field="email" header="Valor" :sortable="true">
+                        <Column field="amount" header="Valor" :sortable="true">
                             <template #body="slotProps">
                                 {{ moneyFormat(slotProps.data.amount) }}
                             </template>
                         </Column>
-                        <Column field="email" header="Interes" :sortable="true">
+                        <Column field="interest" header="Interes">
                             <template #body="slotProps">
                                 {{ moneyFormat(slotProps.data.interest) + "%"}}
                             </template>
                         </Column>
-                        <Column field="email" header="Saldo" :sortable="true">
+                        <Column field="balance" header="Saldo" :sortable="true">
                             <template #body="slotProps">
                                 {{ moneyFormat(slotProps.data.balance) }}
                             </template>
                         </Column>
-                        <Column field="email" header="Cuotas" :sortable="true">
+                        <Column field="total_fee" header="Cuotas">
                             <template #body="slotProps">
                                 {{ slotProps.data.total_fee }}
                             </template>
                         </Column>
-                        <Column field="email" header="Forma de Pago" :sortable="true">
+                        <Column field="way_to_pay" header="Forma de Pago">
                             <template #body="slotProps">
                                 {{ getWayToPay(slotProps.data.way_to_pay) }}
                             </template>
                         </Column>
-                        <Column field="email" header="Estado" :sortable="true">
+                        <Column field="status_id" header="Estado" :sortable="true">
                             <template #body="slotProps">
                                 <span class="loan-badge">
                                 {{ slotProps.data.status }}

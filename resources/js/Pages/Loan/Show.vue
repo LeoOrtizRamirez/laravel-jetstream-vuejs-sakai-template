@@ -1,73 +1,68 @@
-<script setup>
-import AppLayout from '@/Layouts/AppLayout.vue';
-import { Inertia } from "@inertiajs/inertia";
-import JetLabel from '@/Jetstream/Label';
-
-</script>
-
 <template>
-    <AppLayout title="Dashboard">
-        <template #header>
-            <h2 class="font-semibold text-xl text-gray-800 leading-tight">
-                Cuotas
-            </h2>
-        </template>
-
-        <div class="py-12">
-            <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
-                <div class="bg-white overflow-hidden shadow-xl sm:rounded-lg">
-                    <div class="p-6 sm:px-20 bg-white border-b border-gray-200">
-                        <table class="table-auto w-full">
-                            <thead>
-                                <tr>
-                                    <th class="p-3">Cuota</th>
-                                    <th class="p-3">Valor</th>
-                                    <th class="p">Fecha de pago</th>
-                                    <th class="p-3">Estado</th>
-                                    <th class="p-3">Acciones</th>
-                                </tr>
-                            </thead>
-                            <tbody>
-                                <tr v-for="p in payments" :key="p.id">
-                                    <td class="p-3 border">{{ p.fee }}</td>
-                                    <td class="p-3 border">{{ new Intl.NumberFormat('en-US').format(p.amount) }}</td>
-                                    <td class="p-3 border">{{  dateFormat(p.payment_date) }}</td>
-                                    <td class="p-3 border">{{ p.status.name }}</td>
-                                    <td class="p-3 border">
-                                        <button @click="setPayment(p.id)" v-if="p.status_id != 2" class="btn btn-primary mr-2">
-                                            <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" viewBox="0 0 20 20" fill="currentColor">
-                                            <path d="M4 4a2 2 0 00-2 2v1h16V6a2 2 0 00-2-2H4z" />
-                                            <path fill-rule="evenodd" d="M18 9H2v5a2 2 0 002 2h12a2 2 0 002-2V9zM4 13a1 1 0 011-1h1a1 1 0 110 2H5a1 1 0 01-1-1zm5-1a1 1 0 100 2h1a1 1 0 100-2H9z" clip-rule="evenodd" />
-                                            </svg>
-                                        </button>
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <th class="p-3 border">Total</th>
-                                    <th class="p-3 border">{{ new Intl.NumberFormat('en-US').format(total) }}</th>
-                                    <th class="p-3 border" colspan="3"></th>
-                                </tr>
-                            </tbody>
-                        </table>
+    <div>
+        <div class="p-grid">
+            <div class="col-12 lg:col-12 xl:col-12" v-for="p in payments" :key="p.id">
+                <div class="card mb-0">
+                    <div class="flex justify-content-between mb-3">
+                        <div>
+                            <span class="block text-500 font-medium mb-3">Cuota: {{ p.fee }}</span>
+                            <div class="text-900 font-medium text-xl">Valor: <span class="text-green-500 font-medium">{{ new Intl.NumberFormat('en-US').format(p.amount) }}</span></div>
+                        </div>
+                        <div v-if="p.status_id != 2" class="flex align-items-center justify-content-center bg-blue-100 border-round" style="width:2.5rem;height:2.5rem">
+                                <i @click="setPayment(p.id)" class="pi pi-shopping-cart text-blue-500 text-xl"></i>
+                        </div>
+                    </div>
+                    <span class="font-medium">Fecha de Pago: {{  dateFormat(p.payment_date) }}</span>
+                </div>
+            </div>
+            <div class="col-12 lg:col-12 xl:col-12">
+                <div class="card mb-0">
+                    <div class="flex justify-content-between mb-3">
+                        <div>
+                            <div class="text-900 font-medium text-xl">TOTAL: <span class="text-green-500 font-medium">{{ new Intl.NumberFormat('en-US').format(total) }}</span></div>
+                        </div>
                     </div>
                 </div>
             </div>
         </div>
-
-
-    </AppLayout>
+    </div>
 </template>
+
 <script>
+import AppLayout from "../../Layouts/AppLayout";
+import DataTable from "primevue/datatable";
+import {FilterMatchMode} from "primevue/api";
+import DatatableService from "../../Services/DatatableService";
+import Menubar from "primevue/menubar";
+import Column from "primevue/column";
+import Button from "primevue/button";
+import DeleteDialog from "../../Components/DeleteDialog";
+import { Link } from '@inertiajs/inertia-vue3';
+
 export default {
+    name: "Index",
+    layout: AppLayout,
+    components: {
+        AppLayout,
+        Menubar,
+        DataTable,
+        Column,
+        Button,
+        DeleteDialog,
+        Link
+    },
     props:{
         payments:[],
         total: 0,
     },
-    components:{
-        AppLayout,
-        JetLabel
+    data() {
+        return {
+        }
     },
-    methods:{
+    methods: {
+        moneyFormat(value){
+            return(new Intl.NumberFormat('en-US').format(value))
+        },
         dateFormat(date){
             const months = ["Enero", "Febrero", "Marzo", "Abril", "Mayo", "Junio", "Julio", "Agosto", "Septiembre", "Octubre", "Noviembre", "Diciembre"];
             const d = new Date(date)
@@ -75,8 +70,11 @@ export default {
             return  d.getDate() + " de " + month + " " + d.getFullYear()
         },
         setPayment(id){
-            Inertia.post(route('payment.store',[id,'show']))
+            this.$inertia.post(route('payment.store',[id,'show']))
         }
     }
 }
 </script>
+
+<style scoped>
+</style>

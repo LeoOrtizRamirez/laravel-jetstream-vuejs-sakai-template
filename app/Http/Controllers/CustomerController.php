@@ -2,17 +2,15 @@
 
 namespace App\Http\Controllers;
 
-use App\Datatables\CustomerDatatable;
-use Inertia\Response;
-use Illuminate\Http\JsonResponse;
-use Illuminate\Http\RedirectResponse;
-
-
-
 use App\Models\Customer;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Redirect;
 use Inertia\Inertia;
+
+use App\Datatables\CustomerDatatable;
+use Inertia\Response;
+use Illuminate\Http\JsonResponse;
+use Illuminate\Http\RedirectResponse;
 
 class CustomerController extends Controller
 {
@@ -30,7 +28,6 @@ class CustomerController extends Controller
 
         return response()->json($data);
     }
-
     
     public function create(): Response
     {
@@ -54,22 +51,6 @@ class CustomerController extends Controller
         return Inertia::render('Customer/Show', compact('customer'));
     }
 
-
-
-
-
-/*
-    public function edit(Customer $customer): Response
-    {
-        return Inertia::render('Customers/Edit', [
-            'pageUser' => [
-                'id' => $user->id,
-                'name' => $user->name,
-                'email' => $user->email,
-            ]
-        ]);
-    }
-*/
     public function edit(Customer $customer)
     {
         return Inertia::render('Customer/Edit', compact('customer'));

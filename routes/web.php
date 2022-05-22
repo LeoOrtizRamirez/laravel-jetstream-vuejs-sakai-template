@@ -45,6 +45,8 @@ Route::middleware(['auth:sanctum', 'verified'])->group(function () {
     Route::resource('loans', LoanController::class);
 });
 
+Route::post('loan/payment/to-pay/{id}/{view}', [PaymentController::class, 'setToPay'])->name('payment.store');
+
 
 
 /*

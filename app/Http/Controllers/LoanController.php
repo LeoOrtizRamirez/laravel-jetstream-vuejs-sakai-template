@@ -11,6 +11,7 @@ use Illuminate\Support\Facades\Redirect;
 use Inertia\Inertia;
 
 use App\Datatables\LoanDatatable;
+use App\Datatables\PaymentDatatable;
 use Inertia\Response;
 use Illuminate\Http\JsonResponse;
 use Illuminate\Http\RedirectResponse;
@@ -22,23 +23,11 @@ class LoanController extends Controller
         return Inertia::render('Loan/Index');
     }
 
-    public function datatable(
-        Request       $request,
-        LoanDatatable $datatable
-    ): JsonResponse
+    public function datatable(Request $request,LoanDatatable $datatable): JsonResponse
     {
         $data = $datatable->make($request);
-
         return response()->json($data);
     }
-
-    /*
-    public function index()
-    {
-        $loans = Loan::with('status','user','customer')->get();
-        return Inertia::render('Loan/Index', compact('loans'));
-    }
-    */
 
     public function create()
     {
@@ -85,9 +74,11 @@ class LoanController extends Controller
         }
         return redirect()->route('loans.index');
     }
-
-    public function show(Loan $loan)
+    
+    
+    public function show(Loan $loan): Response
     {
+        //dd($loan);
         $payments = Payment::with('status')->where('loan_id',$loan->id)->get();
         $total = 0;
         foreach ($payments as $key => $value) {
@@ -95,6 +86,7 @@ class LoanController extends Controller
         }
         return Inertia::render('Loan/Show', compact('loan', 'payments', 'total'));
     }
+
 
     public function edit(Loan $loan)
     {

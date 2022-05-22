@@ -6851,3 +6851,7 @@ p:last-child {
   background: #c8e6c9;
   color: #256029;
 }
+
+i.pi.pi-shopping-cart {
+  cursor: pointer;
+}

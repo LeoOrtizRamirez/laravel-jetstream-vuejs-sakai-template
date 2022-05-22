@@ -31,7 +31,7 @@ class PaymentController extends Controller
         $payments = Payment::with('status')->where('loan_id',$payment->loan_id)->get();
 
         if($view=="show"){
-            return Redirect::route('loan.show',$payment->loan_id);
+            return Redirect::route('loans.show',$payment->loan_id);
         }
         return Redirect::route('payment.index');
     }
